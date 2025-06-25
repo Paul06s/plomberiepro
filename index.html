@@ -4,23 +4,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Fournitures Plomberie – One-Page</title>
+  <title>PlomberiePro – One-Page</title>
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Canvas d'arrière-plan pour l'animation plomberie -->
+  <canvas id="bg-canvas"></canvas>
+
   <header>
     <nav>
       <div class="nav-container">
         <a href="#" class="logo">PlomberiePro</a>
         <button class="burger" aria-label="Toggle menu">
-          <span></span>
-          <span></span>
-          <span></span>
+          <span></span><span></span><span></span>
         </button>
         <ul class="nav-menu">
           <li><a href="#" data-index="0">Accueil</a></li>
-          <li><a href="#" data-index="1">Produits</a></li>
+          <li><a href="#" data-index="1">Services</a></li>
           <li><a href="#" data-index="2">À propos</a></li>
           <li><a href="#" data-index="3">Contact</a></li>
         </ul>
@@ -31,58 +32,70 @@
   <main class="slides">
     <section class="slide slide-hero">
       <div class="container">
-        <h1>Fournitures de Plomberie</h1>
-        <p>Qualité pro, conseils experts et livraison rapide.</p>
-        <button data-index="1">Voir nos produits ↓</button>
+        <h1>PlomberiePro</h1>
+        <p>Qualité pro, conseils experts et intervention rapide.</p>
+        <button data-index="1">Voir nos services ↓</button>
       </div>
+      <footer>© 2025 PlomberiePro – Tous droits réservés</footer>
     </section>
 
-    <section class="slide slide-produits">
+    <section class="slide slide-services">
       <div class="container">
-        <h2>Nos Produits</h2>
-        <div class="produits-grid">
-          <div class="produit-card">
-            <img src="https://via.placeholder.com/200x150?text=Robinet+Design" alt="Robinet Design">
-            <h3>Robinet Design</h3>
-            <p>Acier inox, finition mate.</p>
+        <h2>Nos Services</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <img src="https://via.placeholder.com/200x150?text=Installation+Climatisation" alt="Installation de climatisation">
+            <h3>Installation de climatisation</h3>
+            <p>Pose complète et conseils personnalisés.</p>
           </div>
-          <div class="produit-card">
-            <img src="https://via.placeholder.com/200x150?text=Tuyau+Flexible" alt="Tuyau Flexible">
-            <h3>Tuyau Flexible</h3>
-            <p>Haute pression, anti-pliure.</p>
+          <div class="service-card">
+            <img src="https://via.placeholder.com/200x150?text=Entretien+Climatisation" alt="Entretien de climatisation">
+            <h3>Entretien de climatisation</h3>
+            <p>Maintenance annuelle et nettoyage filtrant.</p>
           </div>
-          <div class="produit-card">
-            <img src="https://via.placeholder.com/200x150?text=Vanne+Boisseau" alt="Vanne à boisseau">
-            <h3>Vanne à boisseau</h3>
-            <p>Étanchéité parfaite.</p>
+          <div class="service-card">
+            <img src="https://via.placeholder.com/200x150?text=Plomberie+Installation+et+Dépannage" alt="Plomberie installation et dépannage">
+            <h3>Plomberie installation et dépannage</h3>
+            <p>Intervention rapide en plomberie générale.</p>
           </div>
         </div>
       </div>
+      <footer>© 2025 PlomberiePro – Tous droits réservés</footer>
     </section>
 
     <section class="slide slide-about">
       <div class="container">
         <h2>À propos</h2>
-        <p>Depuis 1998, PlomberiePro fournit les artisans et particuliers avec des produits fiables et un service clé en main.</p>
+        <p>Depuis 1998, PlomberiePro accompagne artisans et particuliers avec un service clé en main.</p>
       </div>
+      <footer>© 2025 PlomberiePro – Tous droits réservés</footer>
     </section>
 
     <section class="slide slide-contact">
-      <div class="container">
-        <h2>Contactez-nous</h2>
-        <form>
-          <div class="form-group"><input type="text" placeholder="Votre nom" required /></div>
-          <div class="form-group"><input type="email" placeholder="Votre email" required /></div>
-          <div class="form-group"><textarea placeholder="Votre message" rows="4" required></textarea></div>
-          <button type="submit">Envoyer</button>
-        </form>
+  <div class="container">
+    <h2>Contactez-nous</h2>
+    <form>
+      <div class="form-group">
+        <input type="text" name="prenom" placeholder="Prénom" required />
       </div>
-    </section>
+      <div class="form-group">
+        <input type="text" name="nom" placeholder="Nom" required />
+      </div>
+      <div class="form-group">
+        <input type="tel" name="portable" placeholder="Numéro de portable" required />
+      </div>
+      <div class="form-group">
+        <input type="email" name="email" placeholder="Votre email" required />
+      </div>
+      <div class="form-group">
+        <textarea name="message" placeholder="Votre message" rows="4" required></textarea>
+      </div>
+      <button type="submit">Envoyer</button>
+    </form>
+  </div>
+  <footer>© 2025 PlomberiePro – Tous droits réservés</footer>
+</section>
   </main>
-
-  <footer>
-    © 2025 PlomberiePro – Tous droits réservés
-  </footer>
 
   <script src="main.js"></script>
 </body>
