@@ -1,8 +1,35 @@
 // main.js
+// main.js
 const slidesContainer = document.querySelector('.slides');
 const slides = document.querySelectorAll('.slide');
 let currentIndex = 0;
 let isScrolling = false;
+
+let touchStartY = 0;
+
+window.addEventListener('touchstart', e => {
+  touchStartY = e.changedTouches[0].screenY;
+});
+
+window.addEventListener('touchend', e => {
+  const touchEndY = e.changedTouches[0].screenY;
+  // si on est déjà en train d’animer, on sort
+  if (isScrolling) return;
+
+  // swipe vers le haut (scroll down)
+  if (touchStartY - touchEndY > 50 && currentIndex < slides.length - 1) {
+    isScrolling = true;
+    scrollToSlide(currentIndex + 1);
+  }
+  // swipe vers le bas (scroll up)
+  else if (touchEndY - touchStartY > 50 && currentIndex > 0) {
+    isScrolling = true;
+    scrollToSlide(currentIndex - 1);
+  }
+
+  // on réactive le scroll après l’animation
+  setTimeout(() => { isScrolling = false; }, 800);
+});
 
 function scrollToSlide(idx) {
   currentIndex = Math.max(0, Math.min(idx, slides.length - 1));
@@ -23,7 +50,9 @@ document.querySelectorAll('nav a, .slide-hero button').forEach(el => {
 
 // Wheel scroll
 window.addEventListener('wheel', e => {
+  e.preventDefault();              // bloque le scroll natif
   if (isScrolling) return;
+
   if (e.deltaY > 0 && currentIndex < slides.length - 1) {
     isScrolling = true;
     scrollToSlide(currentIndex + 1);
@@ -31,8 +60,9 @@ window.addEventListener('wheel', e => {
     isScrolling = true;
     scrollToSlide(currentIndex - 1);
   }
+
   setTimeout(() => { isScrolling = false; }, 800);
-});
+}, { passive: false });
 
 // Burger menu toggle
 const burger = document.querySelector('.burger');
