@@ -198,160 +198,102 @@ footer {
 }
 
 /* Responsiveness */
-@media (max-width:1024px) {
+
+/* 1) Desktop / tablette large (<= 1024px) : grille 2 colonnes */
+@media screen and (max-width: 1024px) {
+  .nav-container {
+    padding: var(--spacing) 2rem;
+  }
+  .logo {
+    font-size: 1.125rem;
+  }
   .services-grid {
-     grid-template-columns:repeat(1,3fr); 
-    }
-}
-@media (max-width:768px) {
-  html, body {
-    overflow-x: hidden;
-    overflow-y: auto;             /* on réautorise le scroll vertical natif */
-    -webkit-overflow-scrolling: touch; /* inertie iOS */
-  }
-  .nav-container { 
-    justify-content:space-between; 
-    padding:var(--spacing) 1.5rem; 
-  }
-  .nav-menu {
-    position: absolute;
-    top: 3.5rem;    /* un peu plus bas pour ne pas recouvrir le header */
-    right: 1rem;
-    flex-direction: column;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(5px);
-    padding: var(--spacing);
-    border-radius: 0.5rem;
-    display: none;
-    z-index: 20;    /* au-dessus du canvas (qui est à z-index: -1) */
-  }
-  .nav-menu.active {
-    display: flex;
-  }
-  .nav-menu li + li { 
-    margin:var(--spacing) 0 0 0; 
-  }
-  .burger { 
-    display:flex; 
-  }
-  .services-grid { 
-    grid-template-columns:repeat(1,3fr); 
-  }
-  .slide-hero h1 { 
-    font-size:2rem; 
-  }
-  .slide-hero p { 
-    font-size:1rem; 
-  }
-}
-@media (max-width:480px) {
-  html, body {
-    overflow-x: hidden;
-    overflow-y: auto;             /* on réautorise le scroll vertical natif */
-    -webkit-overflow-scrolling: touch; /* inertie iOS */
-  }
-   .nav-container { 
-    justify-content:space-between; 
-    padding:var(--spacing) 1.5rem; 
-  }
-  .nav-menu { 
-    position:absolute; 
-    top:2rem; 
-    right:1rem; 
-    flex-direction:column; 
-    background:rgba(255,255,255,0.95); 
-    backdrop-filter:blur(5px); 
-    padding:var(--spacing); border-radius:0.5rem; 
-    display:none; 
-  }
-  .nav-menu.active { 
-    display:flex; 
-  }
-  .nav-menu li + li { 
-    margin:var(--spacing) 0 0 0; 
-  }
-  .burger { 
-    display:flex; 
-  }
-   .services-grid {
-    grid-template-columns: 1fr;      /* 1 col par ligne */
-    gap: 1rem;                       /* espace réduit */
-  }
-  .service-card {
-    padding: 1rem;                   /* moins de padding */
-    border-radius: 0.5rem;           /* coins un peu plus petits */
-  }
-  .service-card img {
-    height: auto;
-    object-fit: cover;
-  }
-  .slide-hero h1 { 
-    font-size:1.5rem; 
-  }
-  .slide-hero p { 
-    font-size:0.9rem; 
-  }
-  .slide-services h2, .slide-about h2, .slide-contact h2 {
-    font-size:2rem; 
-  }
-  .service-card h3 {
-    font-size: 1rem;                 /* titre plus petit */
-    margin-bottom: 0.5rem;
-  }
-  .service-card p {
-    font-size: 0.875rem;             /* texte plus petit */
-    line-height: 1.3;
+    grid-template-columns: repeat(2, 1fr);
+    gap: calc(var(--spacing) / 1.2);
   }
 }
 
-@media (max-width:360px) {
+/* 2) Tablette portrait / smartphone large (<= 786px) : menu burger + grille 2 colonnes */
+@media screen and (max-width: 786px) {
+  /* Affichage du burger */
+  .burger {
+    display: flex;
+  }
+  /* Masquage du menu classique */
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    background: rgba(255,255,255,0.95);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: var(--spacing);
+  }
+  /* Quand le burger est actif */
+  .nav-menu.active {
+    display: flex;
+  }
+  /* Grille des services */
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing);
+  }
+}
+
+/* 3) Smartphone moyen (<= 425px) : grille 1 colonne, textes réduits */
+@media screen and (max-width: 425px) {
   html, body {
-    overflow-x: hidden;
-    overflow-y: auto;             /* on réautorise le scroll vertical natif */
-    -webkit-overflow-scrolling: touch; /* inertie iOS */
+    font-size: 0.9rem;
   }
-   .nav-container { 
-    justify-content:space-between; 
-    padding:var(--spacing) 1.5rem; 
+  .container {
+    width: 95%;
   }
-  .nav-menu { 
-    position:absolute; 
-    top:2rem; 
-    right:1rem; 
-    flex-direction:column; 
-    background:rgba(255,255,255,0.95); 
-    backdrop-filter:blur(5px); 
-    padding:var(--spacing); border-radius:0.5rem; 
-    display:none; 
+  .slide-hero h1 {
+    font-size: 2rem;
   }
-  .nav-menu.active { 
-    display:flex; 
+  .slide-hero p {
+    font-size: 1rem;
   }
-  .nav-menu li + li { 
-    margin:var(--spacing) 0 0 0; 
-  }
-  .burger { 
-    display:flex;
+  .slide-hero button {
+    padding: calc(var(--spacing) / 1.2) var(--spacing);
   }
   .services-grid {
-    gap: 0.75rem;                    /* encore moins d’espace */
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 4) Petit smartphone (<= 375px) : ajustements typographiques */
+@media screen and (max-width: 375px) {
+  .logo {
+    font-size: 1rem;
+  }
+  .slide-hero h1 {
+    font-size: 1.75rem;
+  }
+  .slide-hero p {
+    font-size: 0.9rem;
+  }
+  .service-card h3 {
+    font-size: 1.1rem;
+  }
+}
+
+/* 5) Très petit smartphone (<= 320px) : dernières optimisations */
+@media screen and (max-width: 320px) {
+  html, body {
+    font-size: 0.85rem;
+  }
+  .nav-container {
+    padding: calc(var(--spacing) / 1.5) 1rem;
+  }
+  .slide-hero h1 {
+    font-size: 1.5rem;
+  }
+  .slide-hero p {
+    font-size: 0.8rem;
   }
   .service-card {
-    padding: 0.75rem;                /* padding minimal */
-  }
-  .slide-hero h1 { 
-    font-size:1.25rem; 
-  }
-  .slide-hero p { 
-    font-size:0.8rem; 
-  }
-  .slide-services h2, .slide-about h2, .slide-contact h2 {
-    font-size:1.75rem; 
-  }
-   .service-card h3 {
-    font-size: 0.9rem;               /* titre ultra-compact */
-  }
-  .service-card p {
-    font-size: 0.75rem;              /* texte ultra-compact */
+    padding: calc(var(--spacing) / 1.2);
   }
 }
