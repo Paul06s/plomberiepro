@@ -11,12 +11,13 @@
      padding: 0;
   }  
 html, body {
-   height: 100%; 
-   overflow: hidden; 
-   font-family: 'Inter', sans-serif; 
-   color: #333; 
-   position: relative; 
-  }
+  height: 100%;
+  overflow: hidden;               /* on bloque tout scroll natif */
+  font-family: 'Inter', sans-serif;
+  color: #333;
+  position: relative;
+}
+
 #bg-canvas { 
   position: fixed; 
   top: 0; 
@@ -203,22 +204,29 @@ footer {
     }
 }
 @media (max-width:768px) {
+  html, body {
+    overflow-x: hidden;
+    overflow-y: auto;             /* on réautorise le scroll vertical natif */
+    -webkit-overflow-scrolling: touch; /* inertie iOS */
+  }
   .nav-container { 
     justify-content:space-between; 
     padding:var(--spacing) 1.5rem; 
   }
-  .nav-menu { 
-    position:absolute; 
-    top:2rem; 
-    right:1rem; 
-    flex-direction:column; 
-    background:rgba(255,255,255,0.95); 
-    backdrop-filter:blur(5px); 
-    padding:var(--spacing); border-radius:0.5rem; 
-    display:none; 
+  .nav-menu {
+    position: absolute;
+    top: 3.5rem;    /* un peu plus bas pour ne pas recouvrir le header */
+    right: 1rem;
+    flex-direction: column;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(5px);
+    padding: var(--spacing);
+    border-radius: 0.5rem;
+    display: none;
+    z-index: 20;    /* au-dessus du canvas (qui est à z-index: -1) */
   }
-  .nav-menu.active { 
-    display:flex; 
+  .nav-menu.active {
+    display: flex;
   }
   .nav-menu li + li { 
     margin:var(--spacing) 0 0 0; 
@@ -237,6 +245,11 @@ footer {
   }
 }
 @media (max-width:480px) {
+  html, body {
+    overflow-x: hidden;
+    overflow-y: auto;             /* on réautorise le scroll vertical natif */
+    -webkit-overflow-scrolling: touch; /* inertie iOS */
+  }
    .nav-container { 
     justify-content:space-between; 
     padding:var(--spacing) 1.5rem; 
@@ -278,6 +291,11 @@ footer {
 }
 
 @media (max-width:360px) {
+  html, body {
+    overflow-x: hidden;
+    overflow-y: auto;             /* on réautorise le scroll vertical natif */
+    -webkit-overflow-scrolling: touch; /* inertie iOS */
+  }
    .nav-container { 
     justify-content:space-between; 
     padding:var(--spacing) 1.5rem; 
