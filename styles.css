@@ -270,6 +270,10 @@ footer.global-footer {
     margin-left: auto;
     margin-right: 0;
     z-index: 101;
+    color:#000;
+  }
+  .burger span {
+    background: #000 !important;
   }
   .nav-menu {
     top: 100%;
