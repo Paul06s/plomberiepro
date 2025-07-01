@@ -1,35 +1,60 @@
 // main.js
-// main.js
 const slidesContainer = document.querySelector('.slides');
 const slides = document.querySelectorAll('.slide');
 let currentIndex = 0;
 let isScrolling = false;
 
-let touchStartY = 0;
+// Détection mobile
+const isMobile = window.matchMedia('(max-width: 786px)').matches;
 
-window.addEventListener('touchstart', e => {
-  touchStartY = e.changedTouches[0].screenY;
-});
+// Désactive le scroll JS et swipe sur mobile, active le scroll natif
+if (!isMobile) {
+  let touchStartY = 0;
 
-window.addEventListener('touchend', e => {
-  const touchEndY = e.changedTouches[0].screenY;
-  // si on est déjà en train d’animer, on sort
-  if (isScrolling) return;
+  window.addEventListener('touchstart', e => {
+    touchStartY = e.changedTouches[0].screenY;
+  });
 
-  // swipe vers le haut (scroll down)
-  if (touchStartY - touchEndY > 50 && currentIndex < slides.length - 1) {
-    isScrolling = true;
-    scrollToSlide(currentIndex + 1);
-  }
-  // swipe vers le bas (scroll up)
-  else if (touchEndY - touchStartY > 50 && currentIndex > 0) {
-    isScrolling = true;
-    scrollToSlide(currentIndex - 1);
-  }
+  window.addEventListener('touchend', e => {
+    const touchEndY = e.changedTouches[0].screenY;
+    // si on est déjà en train d’animer, on sort
+    if (isScrolling) return;
 
-  // on réactive le scroll après l’animation
-  setTimeout(() => { isScrolling = false; }, 800);
-});
+    // swipe vers le haut (scroll down)
+    if (touchStartY - touchEndY > 50 && currentIndex < slides.length - 1) {
+      isScrolling = true;
+      scrollToSlide(currentIndex + 1);
+    }
+    // swipe vers le bas (scroll up)
+    else if (touchEndY - touchStartY > 50 && currentIndex > 0) {
+      isScrolling = true;
+      scrollToSlide(currentIndex - 1);
+    }
+
+    // on réactive le scroll après l’animation
+    setTimeout(() => { isScrolling = false; }, 800);
+  });
+
+  // Wheel scroll
+  window.addEventListener('wheel', e => {
+    e.preventDefault();              // bloque le scroll natif
+    if (isScrolling) return;
+
+    if (e.deltaY > 0 && currentIndex < slides.length - 1) {
+      isScrolling = true;
+      scrollToSlide(currentIndex + 1);
+    } else if (e.deltaY < 0 && currentIndex > 0) {
+      isScrolling = true;
+      scrollToSlide(currentIndex - 1);
+    }
+
+    setTimeout(() => { isScrolling = false; }, 800);
+  }, { passive: false });
+} else {
+  // Sur mobile : scroll natif
+  document.querySelector('.slides').style.transition = 'none';
+  document.body.style.overflow = 'auto';
+}
 
 function scrollToSlide(idx) {
   currentIndex = Math.max(0, Math.min(idx, slides.length - 1));
@@ -48,22 +73,6 @@ document.querySelectorAll('nav a, .slide-hero button').forEach(el => {
   });
 });
 
-// Wheel scroll
-window.addEventListener('wheel', e => {
-  e.preventDefault();              // bloque le scroll natif
-  if (isScrolling) return;
-
-  if (e.deltaY > 0 && currentIndex < slides.length - 1) {
-    isScrolling = true;
-    scrollToSlide(currentIndex + 1);
-  } else if (e.deltaY < 0 && currentIndex > 0) {
-    isScrolling = true;
-    scrollToSlide(currentIndex - 1);
-  }
-
-  setTimeout(() => { isScrolling = false; }, 800);
-}, { passive: false });
-
 // Burger menu toggle
 const burger = document.querySelector('.burger');
 const navMenu = document.querySelector('.nav-menu');
@@ -78,4 +87,3 @@ navMenu.querySelectorAll('a').forEach(link => {
     navMenu.classList.remove('active');
   });
 });
-//Ancienne version sans touchend
