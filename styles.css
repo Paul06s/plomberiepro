@@ -35,11 +35,6 @@ html, body {
   flex-direction:column; 
   justify-content:center; 
 }
-img { 
-  width:100%; 
-  display:block; 
-  border-radius:0.75rem; 
-}
 header { 
   position:absolute; 
   top:0; 
@@ -73,10 +68,11 @@ header {
   margin:0 var(--spacing); 
 }
 .burger span { 
-  height:2px; 
-  background:#333; 
-  border-radius:2px; 
-  transition: transform 0.3s, opacity 0.3s; 
+  height: 3px;
+  background: #222; /* plus foncé pour contraste */
+  border-radius: 2px;
+  margin: 3px 0;
+  transition: transform 0.3s, opacity 0.3s;
 }
 .burger.active span:nth-child(1) { 
   transform:rotate(45deg) translate(4px,4px);
@@ -164,6 +160,13 @@ header {
 }
 .service-card p { 
   font-size:1rem; color:#555; 
+}
+.service-emoji {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .slide-about, .slide-contact { 
@@ -295,5 +298,50 @@ footer {
   }
   .service-card {
     padding: calc(var(--spacing) / 1.2);
+  }
+}
+
+/* Menu mobile : fond plus contrasté */
+@media screen and (max-width: 786px) {
+  .nav-menu {
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+  .nav-menu a {
+    color: #222;
+    font-size: 1.2rem;
+    padding: 1rem 0;
+  }
+  .nav-menu a:focus, .nav-menu a:hover {
+    color: var(--color-primary);
+    background: #f0f4ff;
+    border-radius: 0.5rem;
+  }
+}
+
+/* Par défaut, on bloque le scroll natif */
+html, body {
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  color: #333;
+  position: relative;
+}
+
+/* Sur mobile, on réactive le scroll natif */
+@media screen and (max-width: 786px) {
+  html, body {
+    overflow: auto;
+    height: auto;
+  }
+  .slides {
+    height: auto;
+    transform: none !important;
+    transition: none !important;
+    will-change: auto;
+  }
+  .slide {
+    height: auto;
+    min-height: 100vh;
   }
 }
