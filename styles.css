@@ -386,3 +386,8 @@ footer.global-footer {
     border-radius: 0.5rem;
   }
 }
+
+/* Retours du formulaire PHP */
+#contact-status:empty { display: none; }
+#contact-status { line-height: 1.5; }
+#contact-form button:disabled { opacity: 0.65; cursor: wait; }

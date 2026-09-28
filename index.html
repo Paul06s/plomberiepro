@@ -74,23 +74,27 @@
     <section class="slide slide-contact">
       <div class="container">
         <h2>Contactez-nous</h2>
-        <form>
+        <form id="contact-form" action="contact.php" method="post" accept-charset="UTF-8">
           <div class="form-group">
-            <input type="text" name="prenom" placeholder="Prénom" required />
+            <input type="text" name="prenom" aria-label="Prénom" autocomplete="given-name" maxlength="100" placeholder="Prénom" required />
           </div>
           <div class="form-group">
-            <input type="text" name="nom" placeholder="Nom" required />
+            <input type="text" name="nom" aria-label="Nom" autocomplete="family-name" maxlength="100" placeholder="Nom" required />
           </div>
           <div class="form-group">
-            <input type="tel" name="portable" placeholder="Numéro de portable" required />
+            <input type="tel" name="portable" aria-label="Numéro de téléphone" autocomplete="tel" maxlength="40" placeholder="Numéro de portable" required />
           </div>
           <div class="form-group">
-            <input type="email" name="email" placeholder="Votre email" required />
+            <input type="email" name="email" aria-label="Votre email" autocomplete="email" maxlength="254" placeholder="Votre email" required />
           </div>
           <div class="form-group">
-            <textarea name="message" placeholder="Votre message" rows="4" required></textarea>
+            <textarea name="message" aria-label="Votre message" maxlength="5000" placeholder="Votre message" rows="4" required></textarea>
+          </div>
+          <div hidden aria-hidden="true">
+            <label>Ne pas remplir <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
           </div>
           <button type="submit">Envoyer</button>
+          <p id="contact-status" role="status" aria-live="polite" aria-atomic="true"></p>
         </form>
       </div>
       <footer>© 2025 PlomberiePro – Tous droits réservés</footer>
@@ -98,5 +102,6 @@
   </main>
   <footer class="global-footer">© 2025 PlomberiePro – Tous droits réservés</footer>
   <script src="main.js"></script>
+  <script src="contact.js"></script>
 </body>
 </html>
