@@ -13,33 +13,32 @@
   <canvas id="bg-canvas"></canvas>
 
   <header>
-    <nav>
+    <nav aria-label="Navigation principale">
       <div class="nav-container">
-        <a href="#" class="logo">PlomberiePro</a>
-        <button class="burger" aria-label="Toggle menu">
-          <span></span><span></span><span></span>
+        <a href="#accueil" class="logo">PlomberiePro</a>
+        <button type="button" class="burger" aria-label="Ouvrir le menu" aria-controls="nav-menu" aria-expanded="false">
+          <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
         </button>
-        <ul class="nav-menu">
-          <li><a href="#" data-index="0">Accueil</a></li>
-          <li><a href="#" data-index="1">Services</a></li>
-          <li><a href="#" data-index="2">À propos</a></li>
-          <li><a href="#" data-index="3">Contact</a></li>
+        <ul id="nav-menu" class="nav-menu">
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#a-propos">À propos</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
     </nav>
   </header>
 
   <main class="slides">
-    <section class="slide slide-hero">
+    <section id="accueil" class="slide slide-hero" tabindex="-1">
       <div class="container">
         <h1>PlomberiePro</h1>
         <p>Qualité pro, conseils experts et intervention rapide.</p>
-        <button data-index="1">Voir nos services ↓</button>
+        <a class="hero-cta" href="#services">Voir nos services ↓</a>
       </div>
-      <footer>© 2025 PlomberiePro – Tous droits réservés</footer>
     </section>
 
-    <section class="slide slide-services">
+    <section id="services" class="slide slide-services" tabindex="-1">
       <div class="container">
         <h2>Nos Services</h2>
         <div class="services-grid">
@@ -60,18 +59,16 @@
           </div>
         </div>
       </div>
-      <footer>© 2025 PlomberiePro – Tous droits réservés</footer>
     </section>
 
-    <section class="slide slide-about">
+    <section id="a-propos" class="slide slide-about" tabindex="-1">
       <div class="container">
         <h2>À propos</h2>
         <p>Depuis 1998, PlomberiePro accompagne artisans et particuliers avec un service clé en main.</p>
       </div>
-      <footer>© 2025 PlomberiePro – Tous droits réservés</footer>
     </section>
 
-    <section class="slide slide-contact">
+    <section id="contact" class="slide slide-contact" tabindex="-1">
       <div class="container">
         <h2>Contactez-nous</h2>
         <form id="contact-form" action="contact.php" method="post" accept-charset="UTF-8">
@@ -97,7 +94,6 @@
           <p id="contact-status" role="status" aria-live="polite" aria-atomic="true"></p>
         </form>
       </div>
-      <footer>© 2025 PlomberiePro – Tous droits réservés</footer>
     </section>
   </main>
   <footer class="global-footer">© 2025 PlomberiePro – Tous droits réservés</footer>
